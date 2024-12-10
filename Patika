@@ -1,0 +1,37 @@
+// Hesap Makinesi Canister
+actor hesap_makinesi {
+  var hucre: Int = 0;
+
+  // Toplama fonksiyonu
+  public func toplama(s: Int): async Int {
+    hucre += s;
+    return hucre;
+  };
+
+  // Çıkarma fonksiyonu
+  public func cikarma(s: Int): async Int {
+    hucre -= s;
+    return hucre;
+  };
+
+  // Çarpma fonksiyonu
+  public func carpma(s: Int): async Int {
+    hucre *= s;
+    return hucre;
+  };
+
+  // Bölme fonksiyonu
+  public func bolme(s: Int): async ?Int {
+    if (s == 0) {
+      return null;  // Divide by zero should return null
+    } else {
+      hucre /= s;
+      return ?hucre;  // Return a nullable integer
+    };
+  };
+
+  // Temizle fonksiyonu (Reset)
+  public func temizle(): async () {
+    hucre := 0;  // Reset 'hucre' to 0
+  };
+};
